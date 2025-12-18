@@ -24,6 +24,7 @@ This mirrors how real-world AI tools such as codebase assistants and internal do
 
 ## Project Structure
 
+ai-file-assistant/
 ├── main.py          # Main CLI entry point
 ├── llm.py           # Gemini LLM client and query logic
 ├── file_loader.py   # Loads and filters project files
