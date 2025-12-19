@@ -1,24 +1,42 @@
-# AI File Assistant (RAG System)
+# AI File Assistant (RAG-Based CLI Tool)
 
 ## Overview
-This project implements a command-line AI File Assistant using a Retrieval-Augmented Generation (RAG) approach.  
-The tool is designed to demonstrate how modern AI systems can be grounded in real data rather than relying on hallucinations.
+AI File Assistant is a command-line tool that allows users to explore and analyze local folders using natural language.  
+It uses a **Retrieval-Augmented Generation (RAG)** approach to ground AI responses in real files instead of producing generic or hallucinated answers.
+
+The tool is designed to be usable by both developers and non-technical users (such as analysts or students) directly from the terminal.
 
 ---
 
 ## Motivation
-This project was built to explore how large language models can be integrated into real developer workflows and used as practical tools for understanding codebases and documentation, rather than as standalone chatbots.
+Large language models are powerful, but their usefulness increases significantly when they are grounded in real data.  
+This project explores how LLMs can be integrated into real workflows by combining file system traversal with AI-driven analysis.
+
+The goal was to build a simple but realistic foundation for tools such as internal document assistants, codebase explorers, or study helpers.
 
 ---
 
 ## How It Works
-1. The program scans a specified local directory and loads relevant files (`.py`, `.md`, `.txt`).
-2. File contents are combined and used as contextual input.
-3. A user asks a question through a command-line interface.
-4. The question and file context are sent to the Gemini LLM.
-5. The model generates an answer grounded in the provided files.
+1. The program scans a user-specified local directory.
+2. It discovers supported files (`.py`, `.md`, `.txt`, `.pdf`).
+3. The user interacts with a clean, menu-driven CLI.
+4. Depending on user intent, the tool either:
+   - Lists files (metadata only), or
+   - Analyzes a selected file using an LLM.
+5. The selected file’s content is sent to the Gemini language model as context.
+6. The model produces responses grounded strictly in the provided file.
 
-This mirrors how real-world AI tools such as codebase assistants and internal document copilots operate.
+This mirrors how real-world RAG systems separate **discovery** from **analysis**.
+
+---
+
+## Key Features
+- 📂 Recursive directory scanning
+- 📄 PDF text extraction support
+- 🧠 Retrieval-Augmented Generation (RAG)
+- 🖥️ Interactive command-line interface
+- 🎯 Scoped, per-file analysis to avoid context dilution
+- 🔒 Environment-variable-based API key management
 
 ---
 
@@ -42,44 +60,48 @@ ai-file-assistant/
 - Python
 - Google Gemini (LLM)
 - Retrieval-Augmented Generation (RAG)
+- PyPDF (PDF text extraction)
 - Virtual environments
 - Command-line interfaces (CLI)
 
 ---
 
 ## Example Usage
-```bash
-python3 main.py
-```
-Sample prompt:
+bash
+python3 main.py ~/Documents/CSC340/Notes
 
-- What are the files doing in this project?
+---
 
-Example output:
+## Interactive Menu
 
-The files in this project are doing the following:
+Found 13 files in this folder.
 
-- `main.py`: The main entry point of the application.
-- `llm.py`: The Gemini LLM client and query logic.
-- `file_loader.py`: Loads and filters project files.
-- `utils.py`: Helper utilities.
-- `README.md`: Project documentation.
+What would you like to do?
+1) List files
+2) Analyze a specific file
+3) Exit
+
+---
 
 ## Why This Project Matters
 
 This project demonstrates:
-	•	Integration of LLM APIs into real applications
-	•	File system traversal and data preprocessing
-	•	Prompt construction and context grounding
-	•	Practical use of RAG to prevent hallucinated responses
-	•	Debugging and environment management in Python
+	•	Practical use of RAG to prevent hallucinated AI responses
+	•	Real-world file system traversal and preprocessing
+	•	Thoughtful UX design for non-technical users
+	•	Understanding of LLM context limitations
+	•	Iterative improvement based on real usage issues
+
+It reflects how production AI tools are designed rather than how toy scripts are written.
 
 ---
+
 ## Future Improvements
-	•	Add a directory selection flag (--dir)
-	•	Per-file question answering
-	•	File summarization mode
-	•	Semantic search using embeddings
+	•	Folder-level high-level summaries
+	•	Multi-file comparative analysis
+	•	Embedding-based semantic search
+	•	Optional GUI or web interface
+	•	OCR support for scanned PDFs
 
 ---
 
